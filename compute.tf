@@ -37,7 +37,7 @@ resource "azurerm_network_interface" "iface" {
 #### VM 
 
 resource "azurerm_linux_virtual_machine" "azure-spoke-vm" {
-  name                = var.vm_name
+  name                = "ubuntu-${var.vm_name}"
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
   location            = azurerm_resource_group.aviatrix-rg.location
   size                = "Standard_B1s"
@@ -94,7 +94,7 @@ resource "azurerm_network_interface" "win-iface" {
 #### VM 
 
 resource "azurerm_windows_virtual_machine" "azure-spoke-vm" {
-  name                = var.vm_name
+  name                = "windows-${var.vm_name}"
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
   location            = azurerm_resource_group.aviatrix-rg.location
   size                = "Standard_D2_v2"
