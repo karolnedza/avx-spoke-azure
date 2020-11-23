@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "aviatrix-rg" {
 #### Public IP 
 
 resource "azurerm_public_ip" "ubuntu-public-ip" {
-  name                = "public-ip-${var.vm_name}"
+  name                = "u-ip-${var.vm_name}"
   location            = azurerm_resource_group.aviatrix-rg.location
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
   allocation_method   = "Dynamic"
@@ -69,7 +69,7 @@ resource "azurerm_linux_virtual_machine" "azure-spoke-vm" {
 #### Public IP 
 
 resource "azurerm_public_ip" "windows-public-ip" {
-  name                = "public-ip-${var.vm_name}"
+  name                = "w-ip-${var.vm_name}"
   location            = azurerm_resource_group.aviatrix-rg.location
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
   allocation_method   = "Dynamic"
