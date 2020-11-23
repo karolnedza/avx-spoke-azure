@@ -97,14 +97,14 @@ resource "azurerm_windows_virtual_machine" "azure-spoke-vm" {
   name                = var.vm_name
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
   location            = azurerm_resource_group.aviatrix-rg.location
-  size                = "Standard_B1s"
+  size                = "Standard_D2_v2"
   admin_username      = "aviatrix"
+  admin_password = "Aviatrix123#"
+  
   network_interface_ids = [
     azurerm_network_interface.iface.id,
   ]
 
-  admin_password = "Aviatrix123#"
-  disable_password_authentication = "false"
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
