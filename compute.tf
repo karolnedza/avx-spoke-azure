@@ -102,7 +102,7 @@ resource "azurerm_windows_virtual_machine" "azure-spoke-vm" {
   admin_password = "Aviatrix123#"
   
   network_interface_ids = [
-    azurerm_network_interface.iface.id,
+    azurerm_network_interface.win-iface.id,
   ]
 
   os_disk {
