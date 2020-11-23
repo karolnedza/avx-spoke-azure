@@ -7,7 +7,6 @@
 
 resource "azurerm_resource_group" "aviatrix-rg" {
   name     = "rg-${var.vm_name}"
- # location = var.azure_cloud_region
   location = var.cloud_region["${var.aviatrix_transit_gateway}"]
 }
 
@@ -67,14 +66,6 @@ resource "azurerm_linux_virtual_machine" "azure-spoke-vm" {
 ################################################################
 
 
-#### Resource Group
-
-resource "azurerm_resource_group" "aviatrix-rg" {
-  name     = "rg-${var.vm_name}"
- # location = var.azure_cloud_region
-  location = var.cloud_region["${var.aviatrix_transit_gateway}"]
-}
-
 #### Public IP 
 
 resource "azurerm_public_ip" "windows-public-ip" {
@@ -86,7 +77,7 @@ resource "azurerm_public_ip" "windows-public-ip" {
 
 #### VM interface 
 
-resource "azurerm_network_interface" "iface" {
+resource "azurerm_network_interface" "win-iface" {
   name                = "nic-windows-${var.vm_name}"
   location            = azurerm_resource_group.aviatrix-rg.location
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
