@@ -26,7 +26,7 @@ resource "aviatrix_spoke_gateway" "avx-spoke-gw" {
   account_name           = "azure-account"
   gw_name                = "avx-${var.vm_name}-gw"
   insane_mode            = var.hpe
-  gw_size                = (var.cloud_type == "aws") ? "t2.medium" : "Standard_B1ms"
+  gw_size                =  "Standard_B1ms"
   subnet       =  aviatrix_vpc.aviatrix_vpc_vnet.subnets[0].cidr
   enable_active_mesh     = true
   manage_transit_gateway_attachment = false
