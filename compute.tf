@@ -119,13 +119,13 @@ resource "azurerm_windows_virtual_machine" "azure-spoke-vm" {
 }
 
 output "public_ip_address_windows" {
-  value = data.azurerm_public_ip.windows-public-ip.ip_address
+  value = azurerm_public_ip.windows-public-ip.ip_address
 }
 
 
 
 output "public_ip_address_ubuntu" {
-  value = data.azurerm_public_ip.ubuntu-public-ip.ip_address
+  value = azurerm_public_ip.ubuntu-public-ip.ip_address
 }
 
 # resource "aws_route53_record" "azure_vm_fqdn" {
