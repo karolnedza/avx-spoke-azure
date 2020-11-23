@@ -16,7 +16,7 @@ resource "azurerm_public_ip" "ubuntu-public-ip" {
   name                = "u-ip-${var.vm_name}"
   location            = azurerm_resource_group.aviatrix-rg.location
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
  }
 
 #### VM interface 
@@ -72,7 +72,7 @@ resource "azurerm_public_ip" "windows-public-ip" {
   name                = "w-ip-${var.vm_name}"
   location            = azurerm_resource_group.aviatrix-rg.location
   resource_group_name = azurerm_resource_group.aviatrix-rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
  }
 
 #### VM interface 
