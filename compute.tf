@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "iface" {
 
   ip_configuration {
     name                          = "avtx_internal-${var.vm_name}"
-    subnet_id = aviatrix_vpc.aviatrix_vpc_vnet.subnets.subnet_id
+    subnet_id = aviatrix_vpc.aviatrix_vpc_vnet.subnets[1].subnet_id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.ubuntu-public-ip.id
 
@@ -84,7 +84,7 @@ resource "azurerm_network_interface" "win-iface" {
 
   ip_configuration {
     name                          = "windows-${var.vm_name}"
-    subnet_id = aviatrix_vpc.aviatrix_vpc_vnet.subnets.subnet_id
+    subnet_id = aviatrix_vpc.aviatrix_vpc_vnet.subnets[1].subnet_id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id = azurerm_public_ip.windows-public-ip.id
 
