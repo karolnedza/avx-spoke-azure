@@ -128,11 +128,17 @@ output "public_ip_address_ubuntu" {
   value = azurerm_public_ip.ubuntu-public-ip.ip_address
 }
 
-# resource "aws_route53_record" "azure_vm_fqdn" {
-#   count = (var.cloud_type == "azure") ? 1 : 0
-#   zone_id    = data.aws_route53_zone.pub.zone_id
-#   name       = "${var.vm_name}.mcna.cc"
-#   type       = "A"
-#   ttl        = "300"
-#   records    = [azurerm_public_ip.avtx-public-ip[0].ip_address]
-# }
+############ DNS 
+
+data "aws_route53_zone" "pub" {
+  name         = "mcna.cc"
+  private_zone = false
+}
+
+resource "aws_route53_record" "azure_vm_fqdn" {
+  zone_id    = data.aws_route53_zone.pub.zone_id
+  name       = "${var.vm_name}.pub.mcna.cc"
+  type       = "A"
+  ttl        = "300"
+  records    = [azurerm_public_ip.windows-public-ip.ip_address]
+}
