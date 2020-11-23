@@ -10,7 +10,7 @@ provider "aviatrix" {
 
 provider "aws" {
   version    = "~> 2.0"
-  region = (var.cloud_type == "aws") ? var.cloud_region["${var.aviatrix_transit_gateway}"]  : "us-east-1"
+  region = "us-east-1"
   access_key = var.aws_access_key
   secret_key = var.aws_secret_key
 }
