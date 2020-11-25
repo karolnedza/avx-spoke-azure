@@ -118,16 +118,6 @@ resource "azurerm_windows_virtual_machine" "azure-spoke-vm" {
   }
 }
 
-output "public_ip_address_windows" {
-  value = azurerm_public_ip.windows-public-ip.ip_address
-}
-
-
-
-output "public_ip_address_ubuntu" {
-  value = azurerm_public_ip.ubuntu-public-ip.ip_address
-}
-
 ############ DNS 
 
 data "aws_route53_zone" "pub" {
@@ -137,7 +127,7 @@ data "aws_route53_zone" "pub" {
 
 resource "aws_route53_record" "azure_vm_fqdn" {
   zone_id    = data.aws_route53_zone.pub.zone_id
-  name       = "${var.vm_name}.pub.mcna.cc"
+  name       = "${var.vm_name}-win.pub.mcna.cc"
   type       = "A"
   ttl        = "300"
   records    = [azurerm_public_ip.windows-public-ip.ip_address]
