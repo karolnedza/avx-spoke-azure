@@ -16,6 +16,6 @@ value = azurerm_network_interface.iface.private_ip_address
 }
 
 output "vpc_subnets" {
- value = aviatrix_vpc.aviatrix_vpc_vnet.subnets[*]
+ value = aviatrix_vpc.aviatrix_vpc_vnet.subnets[*].cidr
   
 }
